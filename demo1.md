@@ -16,10 +16,10 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
       <title>My first three.js app</title>
-    	<style>
-    		body { margin: 0; }
-    		canvas { width: 100%; height: 100% }
-    	</style>
+      <style>
+    	body { margin: 0; }
+    	canvas { width: 100%; height: 100% }
+      </style> 
     </head>
     <body>
 
@@ -142,18 +142,14 @@
     
     camera.position.z = 5;
     var animate = function () {
-    				requestAnimationFrame( animate );
-    
-    				cube.rotation.x += 0.1;
-    				cube.rotation.y += 0.1;
-    
-    				renderer.render(scene, camera);
-    			};
+    	requestAnimationFrame( animate );
+    	cube.rotation.x += 0.1;
+    	cube.rotation.y += 0.1;
+    	renderer.render(scene, camera);
+    };
     animate();
     </script>
     </html>
-
-
   [1]: https://github.com/forthealllight/learn-threejs/blob/master/images/demo1-1.png
   [2]: https://github.com/forthealllight/learn-threejs/blob/master/images/demo1-2.gif
   [3]: https://github.com/forthealllight/learn-threejs/blob/master/images/demo1-3.gif
