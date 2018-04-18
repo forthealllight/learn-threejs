@@ -36,6 +36,7 @@
     renderer.render( scene, camera );
 
 最后我们来看构建的结果：
+
 ![此处输入图片的描述][1]
 
 
