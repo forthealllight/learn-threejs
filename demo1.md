@@ -16,10 +16,10 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
       <title>My first three.js app</title>
-    		<style>
-    			body { margin: 0; }
-    			canvas { width: 100%; height: 100% }
-    		</style>
+    	<style>
+    		body { margin: 0; }
+    		canvas { width: 100%; height: 100% }
+    	</style>
     </head>
     <body>
 
@@ -68,9 +68,11 @@
      renderer.setSize( window.innerWidth/2, window.innerHeight/2,false );
 
 对比高低分辨率下的渲染结果，首先是高分辨率下：
+
 ![此处输入图片的描述][2]
 
 接着是低分辨率下：
+
 ![此处输入图片的描述][3]
 
 （3）最后，我们将renderer渲染的元素，添加进HTML的document中。
@@ -117,10 +119,10 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
       <title>My first three.js app</title>
-    		<style>
-    			body { margin: 0; }
-    			canvas { width: 100%; height: 100% }
-    		</style>
+      <style>
+    	body { margin: 0; }
+    	canvas { width: 100%; height: 100% }
+      </style>
     </head>
     <body>
     
