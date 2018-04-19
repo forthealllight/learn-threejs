@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>My first three.js app</title>
+		<style>
+			body { margin: 0; }
+			canvas { width: 100%; height: 100% }
+      #info {
+      	position: absolute;
+      	top: 10px;
+      	width: 100%;
+      	text-align: center;
+      	z-index: 100;
+      	display:block;
+      }
+		</style>
+</head>
+<body>
+   <canvas id="mainCanvas" width="400px" height="300px"></canvas>
+</body>
+<script src="https://cdn.bootcss.com/three.js/91/three.js"></script>
+<script>
+function init(){
+  var renderer=new THREE.WebGLRenderer({
+    canvas:document.getElementById('mainCanvas')
+  });
+  renderer.setClearColor(0x000000);
+  //scene
+  var scene=new THREE.Scene();
+  //camera
+  var camera=new THREE.PerspectiveCamera(45,4/3,1,1000);
+  camera.position.set(0,0,5);
+  scene.add(camera);
+  //a cube
+  var cube = new THREE.Mesh(new THREE.CubeGeometry(1, 2, 3),
+           new THREE.MeshBasicMaterial({
+               color: 0xff0000
+           })
+   );
+   scene.add(cube);
+
+   // render
+   renderer.render(scene, camera);
+}
+init();
+</script>
+</html>
