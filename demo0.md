@@ -7,6 +7,7 @@
     Cross origin requests are only supported for HTTP....
 
 但是我们在加载字体等文件，可能需要异步请求。当然如果启动一个本地server就不会有影响。这里有种懒人解决方案，就是通过禁用安全性检测的方法
+
 ------
 
 
