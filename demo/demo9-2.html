@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>My first three.js app</title>
+		<style>
+			body { margin: 0; }
+      #info {
+      	position: absolute;
+      	top: 10px;
+      	width: 100%;
+      	text-align: center;
+      	z-index: 100;
+      	display:block;
+      }
+		</style>
+</head>
+<body>
+   <canvas id="mainCanvas" width="400px" height="300px"></canvas>
+</body>
+<script src="https://cdn.bootcss.com/three.js/91/three.js"></script>
+<script>
+function init(){
+  var renderer=new THREE.WebGLRenderer({
+    canvas:document.getElementById('mainCanvas')
+  });
+  renderer.setClearColor(0x000000);
+  //scene
+  var scene=new THREE.Scene();
+  //camera
+  var camera = new THREE.PerspectiveCamera(45, 400 / 300, 1, 10);
+  camera.position.set(4, 3, 5);
+  camera.lookAt(0,0,0);
+  scene.add(camera);
+  var geometry = new THREE.Geometry();
+  //设置自定义形状的顶点
+  geometry.vertices.push(new THREE.Vector3(0,2,0));
+  // 底部4顶点
+  geometry.vertices.push(new THREE.Vector3(-2, 0, -2));
+  geometry.vertices.push(new THREE.Vector3(2, 0, -2));
+  geometry.vertices.push(new THREE.Vector3(2, 0, 2));
+  geometry.vertices.push(new THREE.Vector3(-2, 0, 2));
+
+  // 设置顶点连接情况
+  // 底面
+  geometry.faces.push(new THREE.Face3(1, 2, 3, 4));
+  // 四个侧面
+  geometry.faces.push(new THREE.Face3(0,1,2));
+  geometry.faces.push(new THREE.Face3(0,2,3));
+  geometry.faces.push(new THREE.Face3(0,3,4));
+  geometry.faces.push(new THREE.Face3(0,1,4));
+
+
+  var cube = new THREE.Mesh(geometry,
+        new THREE.MeshBasicMaterial({
+            color: 0xffffff,
+            wireframe: true
+        })
+    );
+  scene.add(cube);
+
+   // render
+  renderer.render(scene, camera);
+}
+init();
+</script>
+</html>
