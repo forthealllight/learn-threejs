@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>My first three.js app</title>
+		<style>
+			body { margin: 0; }
+      #info {
+      	position: absolute;
+      	top: 10px;
+      	width: 100%;
+      	text-align: center;
+      	z-index: 100;
+      	display:block;
+      }
+		</style>
+</head>
+<body>
+   <canvas id="mainCanvas" width="400px" height="300px"></canvas>
+</body>
+<script src="https://cdn.bootcss.com/three.js/91/three.js"></script>
+<script>
+function init() {
+      var renderer = new THREE.WebGLRenderer({
+          canvas: document.getElementById('mainCanvas')
+      });
+      renderer.setClearColor(0x000000);
+      var scene = new THREE.Scene();
+
+      // camera
+      var camera = new THREE.OrthographicCamera(-10, 10, 7.5, -7.5, 0.1, 100);
+      camera.position.set(25, 25, 25);
+      camera.lookAt(new THREE.Vector3(0, 0, 0));
+      scene.add(camera);
+
+      // light
+      var light = new THREE.PointLight(0xffffff, 1, 1000);
+      light.position.set(10, 15, 20);
+      scene.add(light);
+
+      // var texture = THREE.ImageUtils.loadTexture('images/0.png', {}, function() {
+      //     renderer.render(scene, camera);
+      // });
+      // var texture = new THREE.TextureLoader().load( 'images/0.png' ,function(){
+      //   renderer.render(scene,camera);
+      // });
+      var materials = [];
+      for (var i = 0; i < 6; ++i) {
+           materials.push(new THREE.MeshBasicMaterial({
+               map: new THREE.TextureLoader().load('images/' + i + '.png',
+                       function() {
+                           renderer.render(scene, camera);
+                       }),
+               overdraw: true
+           }));
+       }
+
+      var cube = new THREE.Mesh(new THREE.CubeGeometry(5, 5, 5), materials);
+      scene.add(cube);
+      //var sphere = new THREE.Mesh(new THREE.SphereGeometry(5, 25, 15), material);
+      //scene.add(sphere);
+
+      renderer.render(scene, camera);
+}
+init();
+</script>
+</html>
