@@ -18,17 +18,19 @@
 
 我们前面介绍过材质有map属性，我们通过map属性将我们的贴图信息传入到材质中：
 
-        var texture = THREE.ImageUtils.loadTexture('images/0.png',                        {}, function() {
-                      renderer.render(scene, camera);
-                 });
+        var texture = THREE.ImageUtils.loadTexture('images/0.png', {},
+            function() {
+                renderer.render(scene, camera);
+         });
 
 注意这样会提示：THREE.ImageUtils.loadTexture是一个过去版本的API已经被废除，我们这里使用的是91版本的threejs，提示我们使用THREE.TextureLoader()。
 
 如何使用：
 
-      var texture = new THREE.TextureLoader().load( 'images/0.png'                ,function(){
-                  renderer.render(scene,camera);
-                });
+      var texture = new THREE.TextureLoader().load( 'images/0.png' 
+       ,function(){
+             renderer.render(scene,camera);
+       });
 
 通过构造THREE.THREE.TextureLoader().load来调用，并且异步读取文件有一个回调函数，在回调函数中renderer.render。
 
